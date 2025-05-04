@@ -13,16 +13,17 @@ from flask_mail import Mail, Message
 
 import gdown
 if not os.path.exists("braintumor.h5"):
-    gdown.download("https://drive.google.com/drive/folders/1a689Slu-nRyqU9nflIMg7hK08Mz0mmis", "braintumor.h5", quiet=False)
+    gdown.download(id="1IYFd3eD1LsUrSJYSHB8lA3y_pe_ydfml", output="braintumor.h5", quiet=False)
+
 
 if not os.path.exists("CT_scan_model_fixed.h5"):
-    gdown.download("https://drive.google.com/drive/folders/1a689Slu-nRyqU9nflIMg7hK08Mz0mmis", "CT_scan_model_fixed.h5", quiet=False)
+    gdown.download(id="1A6GaT-8dRpegeC2W6qaT6-pgjY6_5KGD", output="CT_scan_model_fixed.h5", quiet=False)
 
 if not os.path.exists("XRay_model.h5"):
-    gdown.download("https://drive.google.com/drive/folders/1a689Slu-nRyqU9nflIMg7hK08Mz0mmis", "XRay_model.h5", quiet=False)
+    gdown.download(id="1JVTfSF20D5PBY2eU_w6_Ww0VWgalSDS1", output="XRay_model.h5", quiet=False)
 
 if not os.path.exists("medical_image_classifier.h5"):
-    gdown.download("https://drive.google.com/drive/folders/1a689Slu-nRyqU9nflIMg7hK08Mz0mmis", "medical_image_classifier.h5", quiet=False)
+    gdown.download  (id="1m-CMQtbehj1K08DZ5ZSLuaxXr6RENNxU", output="medical_image_classifier.h5", quiet=False))
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
