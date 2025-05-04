@@ -23,7 +23,7 @@ if not os.path.exists("XRay_model.h5"):
     gdown.download(id="1JVTfSF20D5PBY2eU_w6_Ww0VWgalSDS1", output="XRay_model.h5", quiet=False)
 
 if not os.path.exists("medical_image_classifier.h5"):
-    gdown.download  (id="1m-CMQtbehj1K08DZ5ZSLuaxXr6RENNxU", output="medical_image_classifier.h5", quiet=False))
+    gdown.download  (id="1m-CMQtbehj1K08DZ5ZSLuaxXr6RENNxU", output="medical_image_classifier.h5", quiet=False)
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
