@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='predict_and_result.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction Result</h2>
+        <p><strong>Document Type:</strong> {{ document_type }}</p>
+        <p><strong>Predicted Classification:</strong> {{ classification }}</p>
+        <a href="{{ url_for('predict') }}" class="btn">Upload Another Image</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title align:center>Symptom Checker Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='chat_styles.css') }}">
+    <style>
+        /* Circle for icon/image */
+        .profile-circle {
+            position: absolute;
+            top: 30px;
+            right: 110px; /* Adjusted for positioning */
+            width: 50px;
+            height: 50px;
+            background: url('{{ url_for('static', filename='icon.avif') }}') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+        .goback-circle {
+            position: absolute;
+            top: 9px;
+            left: 310px; 
+            width: 50px;
+            height: 50px;
+            background: url('{{ url_for('static', filename='goBack.png') }}') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+
+        /* Logout button */
+        .logout-btn {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            padding: 8px 15px;
+            font-size: 16px;
+            background-color: #ff4b4b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            
+        }
+
+        .logout-btn:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="/home"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="/contact"><i class="fa-solid fa-phone"></i> Contact</a></li>
+            <li><a href="/feedback"><i class="fa-regular fa-comments"></i> Feedback</a></li>
+            <li><a href="/history"><i class="fa-solid fa-book"></i> History</a></li>
+        </ul>
+    </div>
+    <!-- Logout Button -->
+    <button class="logout-btn" onclick="location.href='/';">Logout</button>
+    <!-- Go back button -->
+    <div class="goback-circle" onclick="location.href='/success';"></div>
+    <!-- Profile Circle -->
+    <div class="profile-circle"></div>
+    <h1 class="main-title">CareSync AI Medi</h1>
+
+    <div class="chat-container">
+        <i class="fa-light fa-robot fa-lg" style="color: #0a6d08;"></i>
+        <h2 style="text-align:center; color:red; font-size:30px;">Symptom Checker Assistant</h2>
+        <div id="chat-box" class="chat-box">
+            {% for message in history %}
+                <div class="message user-message" style="background-color: {{ message.user_color }}">
+                    <strong>You:</strong> {{ message.user }}
+                </div>
+                <div class="message bot-message" style="background-color: {{ message.gem_color }}">
+                    <strong>Gem-EI:</strong> {{ message.gem }}
+                </div>
+            {% endfor %}
+        </div>
+        <form id="chat-form" method="post" autocomplete="off">
+            <input type="text" name="message" id="user-input" placeholder="Describe your symptoms..." autofocus required>
+            <button type="submit" id="send-btn">Send</button>
+        </form>
+    </div>
+</body>
+</html>

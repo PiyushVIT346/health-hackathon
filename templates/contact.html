@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #cce7ff, #e6f7ff, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .contact-container {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #004080;
+            margin-bottom: 20px;
+        }
+
+        .developer-card {
+            display: inline-block;
+            width: 210px;
+            margin: 10px;
+            text-align: center;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .developer-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .developer-card h2 {
+            font-size: 25px;
+            margin: 10px 0;
+            color: #004080;
+        }
+
+        .developer-card p {
+            font-size: 14px;
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .developer-card a {
+            color: #004080;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .developer-card a:hover {
+            text-decoration: underline;
+        }
+        .navbar {
+            background-color: #007bff;
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .navbar .brand {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          .navbar .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 10;
+            display: flex;
+          }
+          .navbar .nav-links li {
+            margin-left: 20px;
+          }
+          .navbar .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+          }
+          .navbar .nav-links li a:hover {
+            text-decoration: underline;
+            
+          }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">CareSync AI Medi</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+        </ul>
+    </nav>
+    <div class="contact-container">
+        <h1>Meet the Developers</h1>
+
+        <!-- Developer 1 -->
+        <div class="developer-card">
+            <img src="{{ url_for('static', filename='myPhoto.jpg') }}" alt="Developer 1">
+            <h2>Piyush Singh</h2>
+            <h3>student of VIT Bhopal University</h3>
+            <p>Email: <a href="piyush.23bai10346@vitbhopal.ac.in">piyush.23bai10346@vitbhopal.ac.in</a></p>
+            <p>Phone: 9205973514</p>
+            
+        </div>
+
+        <!-- Developer 2 -->
+        <div class="developer-card">
+            <img src="{{ url_for('static', filename='alan.jpg') }}" alt="Developer 2">
+            <h2>Alan Varghese</h2>
+            <h3>student of VIT Bhopal University</h3>
+            <p>Email: <a href="alan.23bai10215@vitbhopal.ac.in">alan.23bai10215@vitbhopal.ac.in</a></p>
+            <p>Phone: 8827898555</p>
+            
+        </div>
+
+        <!-- Developer 3 -->
+        <div class="developer-card">
+            <img src="{{ url_for('static', filename='anjali.jpg') }}" alt="Developer 3">
+            <h2>Anjali Sevkani</h2>
+            <h3>student of VIT Bhopal University</h3>
+            <p>Email: <a href="anjali.23bai10209@vitbhopal.ac.in">anjali.23bai10209@vitbhopal.ac.in</a></p>
+            <p>Phone: 8433177721</p>
+        </div>
+
+        <!-- Developer 4 -->
+        <div class="developer-card">
+            <img src="{{ url_for('static', filename='misthi.jpg') }}" alt="Developer 4">
+            <h2>Misthi sethi</h2>
+            <h3>student of VIT Bhopal University</h3>
+            <p>Email: <a href="misthi.23bai10491@vitbhopal.ac.in">misthi.23bai10491@vitbhopal.ac.in</a></p>
+            <p>Phone: 9812229540</p>
+        </div>
+
+        <!-- Developer 5 -->
+        <div class="developer-card">
+            <img src="{{ url_for('static', filename='parth.jpg') }}" alt="Developer 5">
+            <h2>Parth mishra</h2>
+            <h3>student of VIT Bhopal University</h3>
+            <p>Email: <a href="parth.23bai10539@vitbhopal.ac.in ">parth.23bai10539@vitbhopal.ac.in</a></p>
+            <p>Phone: 7985982208</p>
+        </div>
+
+        <div class="developer-card">
+            <img src="{{ url_for('static', filename='arya.jpg') }}" alt="Developer 6">
+            <h2>Arya Sharma</h2>
+            <h3>student of VIT Bhopal University</h3>
+            <p>Email: <a href="arya.23bai10869@vitbhopal.ac.in">arya.23bai10869@vitbhopal.ac.in</a></p>
+            <p>Phone:7999084330</p>
+        </div>
+    </div>
+</body>
+</html>

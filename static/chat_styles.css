@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ff7f7f, #ffb3b3, #ffd6d6);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-container {
+    width: 600px;
+    height: 500px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #007bff;
+    color: white;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: #f1f1f1;
+    color: #333;
+}
+
+form {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#send-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#send-btn:hover {
+    background: #0056b3;
+}
+
+.main-title{
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    text-align: center;
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #222;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+.sidebar ul li a:hover {
+    color: #1e90ff;
+}
+
+.main-title{
+    font-size: 50px;
+}
+
+.robo{
+    font-size: 30px;
+    position: absolute;
+    top: 100px;
+}

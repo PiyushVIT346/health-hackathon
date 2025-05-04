@@ -1,0 +1,89 @@
+/* Base Styles */
+body {
+    background-image: url("{{ url_for('static', filename='pp.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: auto;
+}
+
+h2 {
+    color: #2e8bc0;
+    text-align: center;
+}
+
+.error {
+    color: #d9534f; /* Bootstrap danger color */
+    text-align: center;
+}
+
+.result-container {
+    border: 1px solid #bee5eb; /* Light blue border */
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Button Styles */
+button {
+    background-color: #5cb85c; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4cae4f; /* Darker green on hover */
+}
+
+/* File Input */
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Loading and Result Messages */
+#loading {
+    font-weight: bold;
+    text-align: center;
+    color: #2e8bc0;
+}
+
+#result {
+    display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+    
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

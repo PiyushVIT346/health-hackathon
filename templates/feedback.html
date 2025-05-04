@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Page</title>
+  <style>
+    /* Reset default margins */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    /* Overall background */
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ff7f7f, #ffb3b3, #ffd6d6);
+    }
+
+    /* Navigation Bar Styling */
+    .navbar {
+      background-color: #007bff;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar .brand {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .navbar .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .navbar .nav-links li {
+      margin-left: 20px;
+    }
+    .navbar .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    .navbar .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Feedback Container Styling */
+    .feedback-container {
+      width: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 100px auto; /* centers the container horizontally and adds top margin */
+    }
+    h1 {
+      text-align: center;
+      color: #800000;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+      color: #800000;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+    }
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+    button {
+      background: #800000;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #660000;
+    }
+    .success-message {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    .error-message {
+      margin-top: 15px;
+      color: red;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="brand">Medical AI Assistant</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/feedback">Feedback</a></li>
+    </ul>
+  </nav>
+
+  <div class="feedback-container">
+    <h1>Feedback</h1>
+    <form id="feedback-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" name="feedback" placeholder="Share your thoughts..." required></textarea>
+
+      <button type="submit">Submit</button>
+      <p id="message" class="success-message" style="display: none;">Thank you for your feedback!</p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('feedback-form');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      
+      message.style.display = 'block';
+      form.reset();
+      
+      setTimeout(() => {
+        message.style.display = 'none';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Image Classification</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='predict_and_result.css') }}">
+  <style>
+    /* Reset default margins */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    
+    body {
+      background-image: url("{{ url_for('static', filename='pp.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navigation Bar Styling */
+    .navbar {
+      background-color: #007bff;
+      width: 100%;
+      padding: 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box; /* Include padding within width */
+    }
+    
+    .navbar .brand {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    .navbar .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    
+    .navbar .nav-links li {
+      margin-left: 20px;
+    }
+    
+    .navbar .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .navbar .nav-links li a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Container styling */
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="brand">CareSync AI Medi</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/feedback">Feedback</a></li>
+    </ul>
+  </nav>
+  <br>
+  <br>
+  <!-- Removed the extra <br> here to keep the navbar flush with the top -->
+
+  <div class="container">
+    <h2>Upload a Medical Image</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" id="fileInput" name="file" accept="image/*" required>
+      <button type="submit">Upload & Predict</button>
+    </form>
+    <div id="loading" style="display: none;">Processing...</div>
+    <div id="error-message" class="error"></div>
+
+    <!-- Prediction Result Section -->
+    <div id="result" class="result-container" style="display: none;">
+      <h2>Prediction Result</h2>
+      <p><strong>Document Type:</strong> <span id="docType"></span></p>
+      <p><strong>Predicted Classification:</strong> <span id="classification"></span></p>
+      <p><strong>First Aid / Precaution:</strong> <span id="firstAid"></span></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("uploadForm").onsubmit = function(event) {
+      event.preventDefault();
+      let fileInput = document.getElementById("fileInput");
+      let formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+
+      let loading = document.getElementById("loading");
+      let errorMessage = document.getElementById("error-message");
+      let resultContainer = document.getElementById("result");
+      let docTypeSpan = document.getElementById("docType");
+      let classificationSpan = document.getElementById("classification");
+      let firstAidSpan = document.getElementById("firstAid");
+
+      loading.style.display = "block";
+      errorMessage.innerText = "";
+      resultContainer.style.display = "none";
+
+      fetch("/upload", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        loading.style.display = "none";
+        if (data.error) {
+          errorMessage.innerText = data.error;
+        } else {
+          docTypeSpan.innerText = data.document_type;
+          classificationSpan.innerText = data.classification;
+          firstAidSpan.innerText = data.first_aid;
+          resultContainer.style.display = "block";
+        }
+      })
+      .catch(error => {
+        loading.style.display = "none";
+        errorMessage.innerText = "Error uploading file.";
+      });
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 70px 0 0;  /* Top padding added to make room for fixed navbar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Removed justify-content:center so content starts at the top (below navbar) */
+    min-height: 100vh;
+}
+
+/* Heading Styling */
+h1 {
+    color: #333;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+/* ------------------- */
+/* History List Styles */
+/* ------------------- */
+
+/* Scoped history list container */
+.prediction-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Scoped history list items */
+.prediction-list li {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    max-width: 1000px;
+    word-wrap: break-word;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 10px;
+}
+
+.prediction-list li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Link Styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Front Logo Image Styling */
+.front-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* ------------------- */
+/* Navbar Styles */
+/* ------------------- */
+
+.navbar {
+    position: fixed;    /* Fixed positioning keeps the navbar at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff;
+    overflow: hidden;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;      /* Ensures navbar stays on top of other elements */
+}
+
+.navbar .brand {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Navbar Links Container */
+.navbar .nav-links {
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Navbar List Items - scoped to navbar only */
+.navbar .nav-links li {
+    margin-left: 20px;
+    /* Reset any global li styles */
+    background: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* Navbar Link Styling */
+.navbar .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 8px 15px;
+}
+
+.navbar .nav-links li a:hover {
+    text-decoration: underline;
+}

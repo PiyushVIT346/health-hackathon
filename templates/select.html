@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Care</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+    }
+    .btn {
+      display: inline-flex;
+      flex-direction: column;  /* Stack image and text vertically */
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    .btn img {
+      width: 48px;  /* Increased image size */
+      height: 48px; /* Increased image size */
+    }
+  </style>
+</head>
+<body
+  class="min-h-screen bg-cover bg-center flex flex-col items-center justify-start"
+  style="background-image: url('https://img.freepik.com/free-vector/modern-medical-health-care-blue-banner-with-ecg-line-graph_1017-45512.jpg');"
+>
+  <!-- Fixed Header with Heading -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-white bg-opacity-75 flex items-center justify-between p-4">
+    <!-- Sidebar Toggle -->
+    <div>
+      <label for="check" class="cursor-pointer">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </label>
+    </div>
+    <!-- Heading -->
+    <h1 class="text-2xl font-bold text-gray-800">CareSync AI Medi</h1>
+    <!-- Logout Button -->
+    <div class="flex items-center space-x-2">
+      <div
+        class="w-10 h-10 rounded-full bg-cover bg-center"
+        style="background-image: url('{{ url_for('static', filename='icon.avif') }}');"
+      ></div>
+      <button class="btn bg-red-500 hover:bg-red-600" onclick="location.href='/'">
+        <i class="fa-solid fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- Sidebar & Menu -->
+  <input type="checkbox" id="check" class="hidden" />
+  <div
+    class="sidebar fixed inset-y-0 left-0 w-1/5 bg-gray-800 bg-opacity-75 transform -translate-x-full transition-transform duration-300 ease-in-out"
+    id="sidebar"
+  >
+    <div class="flex justify-between items-center p-4">
+      <div class="text-white text-xl">Health</div>
+      <label for="check" class="cursor-pointer">
+        <i class="fa-solid fa-xmark text-white text-2xl"></i>
+      </label>
+    </div>
+    
+    <div class="menu mt-8">
+      <ul class="space-y-4 text-white">
+        <li>
+          <i class="fa-solid fa-house mr-2"></i>
+          <a href="/success" class="hover:underline">Home</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-phone mr-2"></i>
+          <a href="/contact" class="hover:underline">Contact</a>
+        </li>
+        <li>
+          <i class="fa-regular fa-comments mr-2"></i>
+          <a href="/feedback" class="hover:underline">Feedback</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-book mr-2"></i>
+          <a href="/history" class="hover:underline">History</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <!-- Main Content (Pushed Down to account for fixed header) -->
+  <main class="mt-20 flex flex-row items-center space-x-6">
+    <a href="/predict" class="btn">
+      <img src="https://img.icons8.com/?size=100&id=iC1w2bJc17QI&format=png&color=000000" alt="Scan Document" />
+      <span>Scan Document</span>
+      <small class="text-xs font-normal uppercase">scan the doc and classify image</small>
+    </a>
+    <a href="/chartPlaner" class="btn">
+      <img src="https://img.icons8.com/fluency/48/000000/meal.png" alt="Food Chart Planner" />
+      <span>Food Chart Planner</span>
+      <small class="text-xs font-normal uppercase">want to plan your food time table</small>
+    </a>
+    <a href="/assistant" class="btn">
+      <img src="https://img.icons8.com/fluency/48/000000/chat.png" alt="Chat Assistant" />
+      <span>Chat Assistant</span>
+      <small class="text-xs font-normal uppercase">tell the disease info and prevention</small>
+    </a>
+  </main>
+
+  <script>
+    document.getElementById('check').addEventListener('change', function () {
+      document.getElementById('sidebar').classList.toggle('-translate-x-full');
+    });
+  </script>
+</body>
+</html>

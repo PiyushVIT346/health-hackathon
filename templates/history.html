@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/history.css">
+    <title>User Prediction History</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">CareSync AI Medi</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <h1>EHR</h1>
+    
+    {% if history %}
+        <!-- Add a class "prediction-list" to differentiate styling from .nav-links -->
+        <ul class="prediction-list">
+            {% for item in history %}
+                <li>
+                    {% if item['doc_type'] == "X-ray" %}
+                        <img src="/static/xray.jpg" alt="X-ray Logo" class="front-logo"><br>
+                    {% elif item['doc_type'] == "MRI" %}
+                        <img src="/static/mri.webp" alt="MRI Logo" class="front-logo"><br>
+                    {% else %}
+                        <img src="/static/ct.png" alt="CT Scan Logo" class="front-logo"><br>
+                    {% endif %}
+                    
+                    <strong>Document Type:</strong> {{ item['doc_type'] }} &nbsp;&nbsp;
+                    <strong>Prediction:</strong> {{ item['prediction'] }} &nbsp;&nbsp;
+                    <strong>Time and Date:</strong> {{ item['timestamp'] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No predictions found in your history.</p>
+    {% endif %}
+
+    <a href="{{ url_for('success') }}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disease Checker & Food Planner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='chartPlaner.css') }}">
+  <style>
+    /* Inline CSS for quick styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("{{ url_for('static', filename='back2.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      margin: 0px;
+      background-color: #f9f9f9;
+    
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar {
+      background-color: #007bff;
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box; /* Ensures padding is included in width */
+      margin: 0;
+    }
+    .navbar .brand {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .navbar .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .navbar .nav-links li {
+      margin-left: 20px;
+    }
+    .navbar .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    .navbar .nav-links li a:hover {
+      text-decoration: underline;
+      
+    }
+    h2, h3 {
+      text-align: center;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    #responseMessage {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    #foodChartContainer {
+      margin-top: 20px;
+    }
+    /* Optional styling for any table generated */
+    #foodChartContainer table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #foodChartContainer th, #foodChartContainer td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    #foodChartContainer th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="brand">CareSync AI Medi</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+        </ul>
+    </nav>
+    <br>
+  <div class="container">
+    <h2>Health Condition Form</h2>
+    <form id="diseaseForm">
+      <h3>Select any existing conditions:</h3>
+      <label><input type="checkbox" name="disease" value="Diabetes"> Diabetes</label>
+      <label><input type="checkbox" name="disease" value="High Blood Pressure"> High Blood Pressure</label>
+      <label><input type="checkbox" name="disease" value="Neural Disease"> Neural Disease</label>
+      <label><input type="checkbox" name="disease" value="Vitamin Imbalance"> Vitamin Imbalance</label>
+      <label><input type="checkbox" name="disease" value="Lung Disease"> Lung Disease</label>
+      <label><input type="checkbox" name="disease" value="Heart Disease"> Heart Disease</label>
+      <label><input type="checkbox" name="disease" value="Digestive Disease"> Digestive Disease</label>
+      
+      <label>Other Previous Disease:
+        <input type="text" id="otherDisease">
+      </label>
+
+      <h3>Type of Food Preference</h3>
+      <label><input type="radio" name="food_preference" value="Vegetarian"> Vegetarian</label>
+      <label><input type="radio" name="food_preference" value="Non Vegetarian"> Non Vegetarian</label>
+      <label><input type="radio" name="food_preference" value="Vegan"> Vegan</label>
+
+      <button type="submit">Submit</button>
+    </form>
+    <p id="responseMessage"></p>
+    <div id="foodChartContainer"></div>
+  </div>
+
+  <script>
+    document.getElementById("diseaseForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      // Collect selected diseases
+      let selectedDiseases = [];
+      document.querySelectorAll('input[name="disease"]:checked').forEach(checkbox => {
+        selectedDiseases.push(checkbox.value);
+      });
+      
+      // Include any additional disease entered
+      let otherDisease = document.getElementById("otherDisease").value.trim();
+      if (otherDisease !== "") {
+        selectedDiseases.push(otherDisease);
+      }
+      
+      // Get selected food preference (radio button)
+      let foodPreferenceElem = document.querySelector('input[name="food_preference"]:checked');
+      let selectedFoodPreference = foodPreferenceElem ? foodPreferenceElem.value : "Not Specified";
+      
+      // Send the data via POST to the Flask server
+      fetch('/submit', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          diseases: selectedDiseases,
+          food_preference: selectedFoodPreference
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Display confirmation message and inject the generated HTML snippet
+        document.getElementById("responseMessage").innerText = data.message;
+        document.getElementById("foodChartContainer").innerHTML = data.food_chart;
+      })
+      .catch(error => console.error("Error:", error));
+    });
+  </script>
+</body>
+</html>

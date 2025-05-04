@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #5327b7, #e5406f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    background: linear-gradient(to bottom right, #ffa726, #ff7043);
+    padding: 100px 250px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  h1 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 50px;
+    padding-bottom: 25px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .login-button {
+    background-color: #ff7043;
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .login-button:hover {
+    background-color: #ffa726;
+  }
+  
+  .additional-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .additional-links a:hover {
+    text-decoration: underline;
+  }
+
+
+.profile-circle {
+        position: absolute;
+        top: 9px;
+        right: 110px; /* Adjusted for positioning */
+        width: 50px;
+        height: 50px;
+        background: url("{{ url_for('static', filename='icon.avif') }}") no-repeat center center;
+        background-size: cover;
+        border-radius: 50%;
+        border: 2px solid #ddd;
+}
+
+    /* Logout button */
+    .logout-btn {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        padding: 8px 15px;
+        font-size: 16px;
+        background-color: #ff4b4b;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        
+    }
+
+    .logout-btn:hover {
+        background-color: #ff1a1a;
+    }

@@ -1,0 +1,7 @@
+*.pyc
+__pycache__/
+.env
+*.h5
+*.db
+uploads/
+*.ipynb
