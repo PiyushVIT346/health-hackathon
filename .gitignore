@@ -3,7 +3,6 @@ __pycache__/
 .env
 *.h5
 *.db
-uploads/
 *.ipynb
 table.py
 chartPlaner.py
