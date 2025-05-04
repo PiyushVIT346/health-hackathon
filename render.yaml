@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: health-hub-ai
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: GOOGLE_API_KEY
+        value: AIzaSyBvbf4g-0K00VP4ANjgooN9arnHr7kiZgo
+    staticPublishPath: uploads

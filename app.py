@@ -11,6 +11,18 @@ from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
 from flask_mail import Mail, Message
 
+import gdown
+if not os.path.exists("braintumor.h5"):
+    gdown.download("https://drive.google.com/drive/folders/1a689Slu-nRyqU9nflIMg7hK08Mz0mmis", "braintumor.h5", quiet=False)
+
+if not os.path.exists("CT_scan_model_fixed.h5"):
+    gdown.download("https://drive.google.com/drive/folders/1a689Slu-nRyqU9nflIMg7hK08Mz0mmis", "CT_scan_model_fixed.h5", quiet=False)
+
+if not os.path.exists("XRay_model.h5"):
+    gdown.download("https://drive.google.com/drive/folders/1a689Slu-nRyqU9nflIMg7hK08Mz0mmis", "XRay_model.h5", quiet=False)
+
+
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
