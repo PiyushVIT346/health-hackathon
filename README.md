@@ -17,7 +17,9 @@
 **Health Hub AI** is an AI-powered healthcare web application designed to provide users with a centralized platform for preliminary health analysis and assistance.
 
 The application combines **deep-learning-based medical image classification** with **Generative AI** to provide several healthcare-oriented capabilities through a single web interface.
+## 🏥 Health Hub AI
 
+![Health Hub AI](https://github.com/PiyushVIT346/health-hackathon/blob/main/health.jpg)
 The platform can automatically identify the type of uploaded medical image and route it to the appropriate specialized deep-learning model. It currently supports:
 
 * 🩻 X-ray analysis
